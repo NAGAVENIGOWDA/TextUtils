@@ -35,7 +35,7 @@ export default function TextForm(props) {
 
     const searchWord = words.includes(iele.value);
     if (searchWord === true) {
-      alert("word is present");
+      alert("the word is present");
     } else {
       alert("the word is not present");
     }
@@ -46,6 +46,7 @@ export default function TextForm(props) {
     text.select();
 
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges()
     document.title="Text Utils-Copy"
   }
 
@@ -65,6 +66,8 @@ else{
   document.body.style.backgroundColor="black"
   document.body.style.color="white"
 }
+
+  var disabled=countWords==0?true:false;
   return (
     
     
@@ -84,16 +87,16 @@ else{
         </div>
         <div>
           <div className="buttons my-4">
-            <button className="btn  btn-primary mx-3" onClick={handleOnclickup}>
+            <button disabled={disabled} className="btn  btn-primary mx-3" onClick={handleOnclickup}>
               convert to upperCase
             </button>
-            <button className="btn  btn-primary mx-3" onClick={handleOnclicklo}>
+            <button disabled={disabled} className="btn  btn-primary mx-3" onClick={handleOnclicklo}>
               convert to LowerCase
             </button>
-            <button className="btn  btn-primary mx-3 " onClick={handleclear}>
+            <button disabled={disabled} className="btn  btn-primary mx-3 " onClick={handleclear}>
               clear text
             </button>
-            <button className="btn  btn-primary mx-3 " onClick={handlecopy}>
+            <button disabled={disabled} className="btn  btn-primary mx-3 " onClick={handlecopy}>
               copy text
             </button>
           </div>
@@ -105,7 +108,7 @@ else{
               placeholder="search a word here"
               size={45}
             />
-            <button className="  btn btn-primary" onClick={handleSearch}>
+            <button disabled={disabled} className="  btn btn-primary" onClick={handleSearch}>
               search
             </button>
           </div>
